@@ -3,13 +3,10 @@ var method = require('./')
 
 var format = method()
 
-format['default'] = function(obj, pre){
-  return obj.toString()
-}
-
-format.define(Function.prototype, format.default)
-format.define(Number.prototype, format.default)
-format.define(RegExp.prototype, format.default)
+format.define(Function.prototype, String)
+format.define(Boolean.prototype, String)
+format.define(Number.prototype, String)
+format.define(RegExp.prototype, String)
 format.define(String.prototype, json)
 
 format.define(Object.prototype, function(obj, indent){
@@ -49,26 +46,4 @@ function keys(obj){
   return out
 }
 
-process.stdout.write(format({
-  "name": "method",
-  "version": "0.1.0",
-  "description": "create methods without risk of naming collisions",
-  "keywords": ["method","polymorphism","protocol"],
-  "bin": {"method": "./bin/method"},
-  "devDependencies": {
-    "serve": "jkroso/serve",
-    "chai-spies": "*",
-    "hydro-chai": "*",
-    "hydro-html": "*",
-    "hydro-bdd": "*",
-    "hydro-dot": "*",
-    "hydro": "*",
-    "jsmd": "*",
-    "chai": "*"
-  },
-  "repository": "git://github.com/jkroso/method.git",
-  "bugs": "https://github.com/jkroso/method/issues",
-  "author": "Jake Rosoman",
-  "files": ["index.js"],
-  "license": "MIT"
-}, '') + '\n')
+process.stdout.write(format(require('hydro/package'), '') + '\n')
