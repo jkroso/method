@@ -1,0 +1,9 @@
+{
+	"name": "method",
+	"repo": "jkroso/method",
+	"description": "create methods without risk of naming collisions",
+	"keywords": ["method","polymorphism","protocol"],
+	"dependencies": {},
+	"scripts": ["index.js"],
+	"license": "MIT"
+}
