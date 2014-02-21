@@ -1,7 +1,7 @@
 
 # method
 
-A better way of creating polymorphic functions. Rather than attaching specialized functions to your data you "attach" them to `method`'s. Each `method` represents a concept. e.g `forEach`, `map`, `reduce`, etc.. and the specialized functions you write implement this concept for each data type you want it defined for. With this approach you don't need to worry about naming collisions (I'm constantly wanting to give functions and data the same name). And it gets you back to working with plain functions, which makes a lot of abstractions easier to apply.
+A better way of creating polymorphic functions. Rather than attaching specialized functions to your data you "attach" them to `method`'s. Each `method` represents a concept. e.g `forEach`, `map`, `reduce`, etc.. and each specialized function you write implements this concept for a particular data type. With this approach you don't need to worry about naming collisions (I'm constantly wanting to give functions and data the same name). And it gets you back to working with plain functions, which makes a lot of abstractions easier to apply.
 
 ## Installation
 
