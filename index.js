@@ -1,4 +1,5 @@
 
+var noop = function(){}
 var counter = 1
 
 /**
@@ -11,8 +12,12 @@ var counter = 1
 function method(name){
   name = name || 'jkroso/method-' + counter++
   function dispatch(obj){
-    return obj[name].apply(this, arguments)
+    var fn = obj != null
+      ? obj[name] || dispatch['default']
+      : dispatch['default']
+    return fn.apply(this, arguments)
   }
+  dispatch['default'] = noop
   dispatch._name = name
   dispatch.define = define
   return dispatch

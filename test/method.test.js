@@ -37,3 +37,15 @@ it('should prefer more specialized implementations', function(){
   one.should.not.have.been.called()
   two.should.have.called.with.exactly('hi')
 })
+
+it('should handle `null` objects', function(){
+  var fn = method()
+  fn(null)
+})
+
+it('should support a global default handler', function(){
+  var fn = method()
+  fn['default'] = chai.spy()
+  fn(null)
+  fn['default'].should.have.been.called()
+})
