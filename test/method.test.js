@@ -49,3 +49,9 @@ it('should support a global default handler', function(){
   fn(null)
   fn['default'].should.have.been.called()
 })
+
+it('sugar for default handlers', function(){
+  var fn = method(chai.spy())
+  fn(null)
+  fn['default'].should.have.been.called()
+})

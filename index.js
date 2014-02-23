@@ -10,7 +10,6 @@ var counter = 1
  */
 
 function method(name){
-  name = name || 'jkroso/method-' + counter++
   function dispatch(obj){
     var fn = obj != null
       ? obj[name] || dispatch['default']
@@ -18,6 +17,11 @@ function method(name){
     return fn.apply(this, arguments)
   }
   dispatch['default'] = noop
+  if (typeof name == 'function') {
+    dispatch['default'] = name
+    name = null
+  }
+  name = name || 'jkroso/method-' + counter++
   dispatch._name = name
   dispatch.define = define
   return dispatch
