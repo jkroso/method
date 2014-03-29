@@ -22,7 +22,7 @@ function method(name){
     name = null
   }
   name = name || 'jkroso/method-' + counter++
-  dispatch._name = name
+  dispatch.id = name
   dispatch.define = define
   return dispatch
 }
@@ -36,7 +36,7 @@ function method(name){
  */
 
 function define(type, fn){
-  Object.defineProperty(type, this._name, {
+  Object.defineProperty(type, this.id, {
     configurable: true,
     enumerable: false,
     writable: false,
