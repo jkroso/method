@@ -23,7 +23,7 @@ function method(name){
   }
   name = name || 'jkroso/method-' + counter++
   dispatch.id = name
-  dispatch.define = define
+  dispatch.def = dispatch.define = define
   return dispatch
 }
 
