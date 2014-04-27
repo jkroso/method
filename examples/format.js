@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 // this is an example of a custom JSON formatter. In this case
 // its designed to format JSON the same way I do when coding
