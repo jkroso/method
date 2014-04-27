@@ -8,6 +8,7 @@ var method = require('..')
 
 var format = method()
 
+format.default = String
 format.define(Function.prototype, String)
 format.define(Boolean.prototype, String)
 format.define(Number.prototype, String)
@@ -20,7 +21,7 @@ format.define(Object.prototype, function(obj, indent){
   if (ks.length == 1) {
     var k = ks[0]
     var str = format(obj[k])
-    if (/^[a-z]*$/.test(k) && k.length < 8 && str.length < 60) {
+    if (/^[a-z]*$/.test(k) && k.length < 8 && (indent.length + str.length) < 60) {
       return '{' + json(k) + ': ' + str + '}'
     }
   }
@@ -34,7 +35,7 @@ format.define(Object.prototype, function(obj, indent){
 
 format.define(Array.prototype, function(arr, indent){
   var short = json(arr)
-  if (short.length < 71) return short
+  if ((indent.length + short.length) < 65) return short
   return arr.reduce(function(str, item, i){
     if (i) str += ','
     return str + '\n  ' + indent + format(item, indent + '  ')
