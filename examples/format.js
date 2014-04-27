@@ -51,4 +51,9 @@ function keys(obj){
   return out
 }
 
-process.stdout.write(format(require('hydro/package'), '') + '\n')
+var buf = ''
+process.stdin.on('readable', function(){
+  buf += this.read() || ''
+}).on('end', function(){
+  process.stdout.write(format(JSON.parse(buf), '') + '\n')
+})
