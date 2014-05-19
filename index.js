@@ -1,5 +1,7 @@
 
-var noop = function(){}
+function toString(){ return this.id }
+function noop(){}
+
 var counter = 1
 
 /**
@@ -17,6 +19,7 @@ function method(name){
     return fn.apply(this, arguments)
   }
   dispatch['default'] = noop
+  dispatch.toString = toString
   if (typeof name == 'function') {
     dispatch['default'] = name
     name = null

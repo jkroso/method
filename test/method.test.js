@@ -11,6 +11,16 @@ it('should allow custom names', function(){
   spy.should.have.been.called()
 })
 
+it('.toString()', function(){
+  var fn = method('render')
+  var obj = {}
+  var spy = chai.spy()
+  obj[fn] = spy
+  fn(obj)
+  obj.should.have.property('render')
+  spy.should.have.been.called()
+})
+
 it('should dispatch to defined implementations', function(){
   var fn = method()
   var spy = chai.spy()
