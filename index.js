@@ -11,8 +11,10 @@ var counter = 1
  * @api public
  */
 
-function method(name){
-  function dispatch(obj){
+function method(name, i){
+  if (i == null) i = 0
+  function dispatch(){
+    var obj = arguments[i]
     var fn = obj != null
       ? obj[name] || dispatch['default']
       : dispatch['default']

@@ -65,3 +65,8 @@ it('sugar for default handlers', function(){
   fn(null)
   fn['default'].should.have.been.called()
 })
+
+it('dispatching on custom argument indices', function(){
+  var get = method(function(key, obj){ return obj[key] }, 2)
+  get('a', {a:1}).should.eql(1)
+})
