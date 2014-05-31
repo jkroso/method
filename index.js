@@ -1,6 +1,9 @@
 
 function toString(){ return this.id }
-function noop(){}
+
+function noImplemented(){
+  throw new Error('method not implemented')
+}
 
 var counter = 1
 
@@ -20,7 +23,7 @@ function method(name, i){
       : dispatch['default']
     return fn.apply(this, arguments)
   }
-  dispatch['default'] = noop
+  dispatch['default'] = noImplemented
   dispatch.toString = toString
   if (typeof name == 'function') {
     dispatch['default'] = name

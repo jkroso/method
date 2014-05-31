@@ -49,8 +49,13 @@ it('should prefer more specialized implementations', function(){
 })
 
 it('should handle `null` objects', function(){
-  var fn = method()
-  fn(null)
+  method(chai.spy())(null)
+})
+
+it('should throw if not implemented', function(){
+  (function(){
+    method()(null)
+  }).should.throw(/not implemented/i)
 })
 
 it('should support a global default handler', function(){
